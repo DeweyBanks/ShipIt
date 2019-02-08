@@ -1,1 +1,26 @@
-index.html.erb
+<div class="page-header">
+  <div class='row'>
+    <div class='small-12 columns'>
+      <h1 class='title-heading text-center'>Vendors</h1>
+    </div>
+  </div>
+</div>
+
+<table class="table table-hover">
+  <tr>
+    <th>Name</th>
+    <% @vendors.each do |vendor| %>
+      <tr>
+        <td>
+          <%= link_to vendor.name, vendor_path(vendor) %>
+        </td>
+      </tr>
+    <% end %>
+  </tr>
+</table>
+<nav aria-label="...">
+  <ul class="pager">
+    <li><a href="#">Previous</a></li>
+    <li><a href="#">Next</a></li>
+  </ul>
+</nav>
