@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'autoprefixer-rails'
 
-gem 'factory_bot'
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -41,6 +41,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'rspec-rails', '~> 3.8'
+  gem 'factory_bot_rails'
 end
 
 group :development do
