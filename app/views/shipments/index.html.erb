@@ -8,16 +8,16 @@
 
 <table class="table table-hover">
   <tr>
-    <th><%= sortable "tracking number" %></th>
-    <th><%= sortable "ship_state" %></th>
-    <th><%= sortable "created_at", "Created" %></th>
+    <th>Tracking Number</th>
+    <th>Status</th>
+    <th>Date Shipped</th>
     <% @shipments.each do |shipment| %>
       <tr>
         <td>
           <%= link_to shipment.tracking_number, shipment_path(shipment) %>
         </td>
         <td>
-          <%= shipment.ship_state %>
+          <%= shipment.status %>
         </td>
         <td>
           <%= shipment.created_at %>

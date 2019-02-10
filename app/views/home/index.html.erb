@@ -1,3 +1,39 @@
 <div class="page-header">
   <h1>ShipIt! <small>Track it</small></h1>
 </div>
+<div class="row">
+  <div class="col-md-6">
+    <h3>Create Shipment</h3>
+    <%= render 'form' %>
+  </div>
+</div>
+<div class="jumbotron">
+  <div class="container">
+    <h1 class='title-heading text-center'>Active Orders</h1>
+    <table class="table table-hover">
+      <tr>
+        <th>Vendor</th>
+        <th>Order Number</th>
+        <th>Tracking Number</th>
+        <th>Delivery Status</th>
+        <% @orders.each do |order| %>
+          <tr>
+            <td>
+              <%= order.vendor.name %>
+            </td>
+            <td>
+              <%= order.number %>
+            </td>
+            <td>
+              <%= link_to order.shipment.tracking_number, shipment_path(order.shipment) %>
+            </td>
+            <td>
+              <%= order.shipment.status %>
+            </td>
+          </tr>
+        <% end %>
+      </tr>
+    </table>
+    <%= will_paginate @orders, renderer: BootstrapPagination::Rails %>
+  </div>
+</div>

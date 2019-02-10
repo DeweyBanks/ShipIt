@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190210153241) do
+ActiveRecord::Schema.define(version: 20190210183139) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "address1",   limit: 255
+    t.string   "address2",   limit: 255
+    t.string   "city",       limit: 255
+    t.string   "state_name", limit: 255
+    t.string   "zipcode",    limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "orders", force: :cascade do |t|
     t.string   "number",     limit: 255
@@ -30,8 +40,10 @@ ActiveRecord::Schema.define(version: 20190210153241) do
     t.string   "status",                 limit: 255
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
+    t.integer  "address_id",             limit: 4
   end
 
+  add_index "shipments", ["address_id"], name: "index_shipments_on_address_id", using: :btree
   add_index "shipments", ["order_id"], name: "index_shipments_on_order_id", using: :btree
 
   create_table "vendors", force: :cascade do |t|
@@ -41,5 +53,6 @@ ActiveRecord::Schema.define(version: 20190210153241) do
   end
 
   add_foreign_key "orders", "vendors"
+  add_foreign_key "shipments", "addresses"
   add_foreign_key "shipments", "orders"
 end
