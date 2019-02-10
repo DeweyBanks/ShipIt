@@ -1,0 +1,29 @@
+<div class="page-header">
+  <div class='row'>
+    <div class='small-12 columns'>
+      <h1 class='title-heading text-center'>Shipments</h1>
+    </div>
+  </div>
+</div>
+
+<table class="table table-hover">
+  <tr>
+    <th><%= sortable "tracking number" %></th>
+    <th><%= sortable "ship_state" %></th>
+    <th><%= sortable "created_at", "Created" %></th>
+    <% @shipments.each do |shipment| %>
+      <tr>
+        <td>
+          <%= link_to shipment.tracking_number, shipment_path(shipment) %>
+        </td>
+        <td>
+          <%= shipment.ship_state %>
+        </td>
+        <td>
+          <%= shipment.created_at %>
+        </td>
+      </tr>
+    <% end %>
+  </tr>
+</table>
+<%= will_paginate @shipments, renderer: BootstrapPagination::Rails %>
