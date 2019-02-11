@@ -6,6 +6,9 @@
     <h3>Create Shipment</h3>
     <%= render 'form' %>
   </div>
+  <div class="col-md-6">
+    <%= render 'urgent' %>
+  </div>
 </div>
 <div class="jumbotron">
   <div class="container">
@@ -27,7 +30,7 @@
             <td>
               <%= link_to order.shipment.tracking_number, shipment_path(order.shipment) %>
             </td>
-            <td>
+            <td class="<%= order.shipment.status.parameterize("_") %>">
               <%= order.shipment.status %>
             </td>
           </tr>

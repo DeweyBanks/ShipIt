@@ -30,7 +30,6 @@ gem 'bootstrap-sass', '~> 3.3.1'
 gem 'autoprefixer-rails'
 
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
-gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
 
 # Use ActiveModel has_secure_password

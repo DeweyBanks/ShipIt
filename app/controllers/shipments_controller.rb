@@ -35,6 +35,8 @@ class ShipmentsController < ApplicationController
         :tracking_number,
         :status,
         :expected_delivery_date,
+        :shipped_at,
+        :delivered_at,
         order_attributes: [:id, :number, :vendor_id, :status ],
         address_attributes: [:id, :address1, :address2, :city, :zipcode, :state_name]
       )
