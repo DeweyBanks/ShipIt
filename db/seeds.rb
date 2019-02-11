@@ -12,8 +12,8 @@ Vendor.all.each do |vendor|
   10.times do |n|
     Shipment.create!(
       tracking_number: "#{n}_#{Faker::Invoice.creditor_reference}",
-      shipped_at: Time.current,
-      expected_delivery_date: Time.current,
+      shipped_at: Time.now,
+      expected_delivery_date: Time.current + rand(1..20).days,
       delivered_at: Time.current + rand(1..100).days,
       status: status_choices.sample,
       order_attributes: {
