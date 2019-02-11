@@ -9,7 +9,7 @@ status_choices = ["normal", "not normal", "very late"]
 end
 
 Vendor.all.each do |vendor|
-  10.times do |n|
+  200.times do |n|
     Shipment.create!(
       tracking_number: "#{n}_#{Faker::Invoice.creditor_reference}",
       shipped_at: Time.now,
