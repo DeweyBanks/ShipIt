@@ -37,12 +37,12 @@ ActiveRecord::Schema.define(version: 20190210205746) do
     t.string   "tracking_number",        limit: 255
     t.integer  "order_id",               limit: 4
     t.datetime "expected_delivery_date"
-    t.string   "status",                 limit: 255
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.integer  "address_id",             limit: 4
     t.datetime "shipped_at"
     t.datetime "delivered_at"
+    t.string   "status",                 limit: 255
   end
 
   add_index "shipments", ["address_id"], name: "index_shipments_on_address_id", using: :btree

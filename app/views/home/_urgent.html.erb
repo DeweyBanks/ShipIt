@@ -1,22 +1,21 @@
-<div class="jumbotron">
-  <div class="container">
-    <h1 class='title-heading text-center'>Urgent Shipments</h1>
-    <table class="table table-hover">
-      <tr>
-        <th>Tracking Number</th>
-        <th>Delivery Status</th>
-        <% @late_shipments.each do |shipment| %>
-          <tr>
-            <td>
-              <%= link_to shipment.tracking_number, shipment_path(shipment) %>
-            </td>
-            <td class="<%= shipment.status.parameterize("_") %>">
-              <%= shipment.status %>
-            </td>
-          </tr>
-        <% end %>
-      </tr>
-    </table>
-    <%= will_paginate @orders, renderer: BootstrapPagination::Rails %>
-  </div>
-</div>
+
+  <h1 class='title-heading text-center'>Urgent Shipments</h1>
+  <table class="table table-hover">
+    <tr>
+      <th>Tracking Number</th>
+      <th>Delivery Status</th>
+      <% @late_shipments.each do |shipment| %>
+        <tr>
+          <td>
+            <%= link_to shipment.tracking_number, shipment_path(shipment) %>
+          </td>
+          <td class="<%= shipment.status.parameterize("_") %>">
+            <%= shipment.status %>
+          </td>
+        </tr>
+      <% end %>
+    </tr>
+  </table>
+  <%= will_paginate @orders, renderer: BootstrapPagination::Rails %>
+
+

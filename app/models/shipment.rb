@@ -6,8 +6,32 @@ class Shipment < ActiveRecord::Base
   accepts_nested_attributes_for :address
   validates :tracking_number, uniqueness: { case_sensitive: false }
   after_create :set_expected_delivery_date
-  # after_find :update_status
   scope :urgent, -> { where.not(status: "normal") }
+
+
+    def check_status
+      # step1: get expected delivery date
+      # step2: get current date
+      # step3: if current date is one week before expected date
+      # set as normal
+      # if current date is equal or less than a day greater than
+      # expected date then set as not normal.
+      # if current date is greater than one day set to very late.
+      start_date = Time.now.beginning_of_day
+      dev_date = self.expected_delivery_date.beginning_of_day unless self.expected_delivery_date.blank?
+
+      if start_date - 1.days <= dev_date
+        self.status = "normal"
+      elsif start_date - 1.days >= dev_date
+        self.status = "not normal"
+      elsif start_date - 2.days >= dev_date
+        self.status = "very late"
+      else
+      end
+      self.save
+      self.status
+    end
+
 
   private
 
@@ -35,23 +59,6 @@ class Shipment < ActiveRecord::Base
       end
     end
 
-    def update_status
-      # step1: get expected delivery date
-      # step2: get current date
-      # step3: if current date is one week before expected date
-      # set as normal
-      # if current date is equal or less than a day greater than
-      # expected date then set as not normal.
-      # if current date is greater than one day set to very late.
 
-        # if Time.now.beginning_of_day - 7.days < self.expected_delivery_date
-        #   self.status = "normal"
-        # elsif Time.now.beginning_of_day - 1.days >= self.expected_delivery_date
-        #   self.status = "not normal"
-        # else
-        #   self.status = "very late"
-        # end
-        # self.save
-    end
 end
 

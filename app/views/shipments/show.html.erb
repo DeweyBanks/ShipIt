@@ -4,5 +4,12 @@
     <h3>Vendor: <%= @shipment.vendor.name %></h3>
     <h3>Order: <%= @shipment.order.number %></h3>
     <h3>Tracking Number: <%= @shipment.tracking_number %></h3>
+    <h3>Status:
+      <span class="<%= @shipment.check_status.parameterize("_") %>">
+        <%= @shipment.check_status %>
+      </span>
+    </h3>
+    <h3>Expected Delivery Date: <%= @shipment.expected_delivery_date.strftime("%B %d, %Y") %></h3>
   </div>
 </div>
+
